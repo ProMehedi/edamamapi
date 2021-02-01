@@ -6,17 +6,16 @@ import { AUTH } from './config';
 import { useEffect, useState } from 'react';
 
 const App = () => {
-  const APP_ID = AUTH.APP_ID;
-  const APP_KEY = AUTH.APP_KEY;
-  const query = `https://api.edamam.com/search?q=${search}&app_id=${APP_ID}&app_key=${APP_KEY}`;
-
   const [recipes, setRecipes] = useState([]);
   const [searchTxt, setSearchTxt] = useState('');
   const [search, setSearch] = useState('chicken');
 
   useEffect(() => {
+    const APP_ID = AUTH.APP_ID;
+    const APP_KEY = AUTH.APP_KEY;
+    
     const getRecipes = async () => {
-      const response = await fetch(query);
+      const response = await fetch(`https://api.edamam.com/search?q=${search}&app_id=${APP_ID}&app_key=${APP_KEY}`);
       const data = await response.json();
       setRecipes(data.hits);
     }
@@ -46,7 +45,7 @@ const App = () => {
               onChange={getSearchValue}
             />
             <button type="submit">
-              Search <img src={searchIcon} width="15" />
+              Search <img src={searchIcon} width="15" alt="" />
             </button>
           </form>
 
