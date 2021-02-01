@@ -6,6 +6,10 @@ import { AUTH } from './config';
 import { useEffect, useState } from 'react';
 
 const App = () => {
+  const APP_ID = AUTH.APP_ID;
+  const APP_KEY = AUTH.APP_KEY;
+  const query = `https://api.edamam.com/search?q=${search}&app_id=${APP_ID}&app_key=${APP_KEY}`;
+
   const [recipes, setRecipes] = useState([]);
   const [searchTxt, setSearchTxt] = useState('');
   const [search, setSearch] = useState('chicken');
@@ -18,10 +22,6 @@ const App = () => {
     }
     getRecipes()
   }, [search])
-
-  const APP_ID = AUTH.APP_ID;
-  const APP_KEY = AUTH.APP_KEY;
-  const query = `https://api.edamam.com/search?q=${search}&app_id=${APP_ID}&app_key=${APP_KEY}`;
 
   const getSearchValue = e => {
     setSearchTxt(e.target.value);

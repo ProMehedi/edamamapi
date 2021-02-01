@@ -3,7 +3,7 @@ const Recipe = (props) => {
     <div className={`col col-md-${props.column}`}>
       <div className="recipe">
         <div className="imgWrap">
-          <img src={props.image} />
+          <img src={props.image} alt={props.title} />
         </div>
         <h4 className="title">{props.title}</h4>
         <div className="recipeContent">
